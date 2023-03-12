@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_services.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1><a class="title" href="/">Markonnect</a></h1>
+        <div class="auth-links">
+            <h5>Welcome, {{ agency.name }}</h5>
+            <a href="/agency/dashboard" class="logout-link">Back 🔙</a>
+            <a href="/logout" class="logout-link">Log Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="box">
+            <div class="col-md-6">
+                <h2>Edit your services here</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="3">Services Offered</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr>
+                            <th>Service</th>
+                            <th>Description</th>
+                            <th>Pricing</th>
+                            <th><a href="/agency/dashboard">Done ✔️</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for service in services %}
+                        <form method="POST" action="/update/services/{{ service.id }}">
+                            <tr>
+                                <td>
+                                    <!-- <input type="text" name="name" value="{{service.name}}"> -->
+                                    <textarea name="name" cols="15" rows="3" maxlength="30">{{service.name}}</textarea>
+                                </td>
+                                <td>
+                                    <textarea name="description" cols="30" rows="5">{{service.description}}</textarea>
+                                </td>
+                                <td>$
+                                    <input type="number" step="0.01" name="cost" value="{{service.cost}}">
+                                    /hour
+                                    <input type="hidden" name="id" value="{{ service.id }}">
+                                </td>
+                                <td>
+                                    <form method="POST" action="/update/services/{{ service.id }}">
+                                        <button type="submit" name="id" value="{{service.id}}"
+                                            class="update-button">Update</button>
+                                    </form>
+                                    <form method="POST" action="/delete_service/{{ service.id }}">
+                                        <button type="submit" class="delete-button">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </form>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="services">
+                <h2>Select the services you offer.</h2>
+                <p>You'll show up in search results and get jobs for all services you select.</p>
+                <form action="/add_services" method="POST">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Content Creation"
+                                            id="content-creation" name="services">
+                                        <label class="form-check-label" for="content-creation">
+                                            Content Creation
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            value="Search Engine Optimization (SEO)" id="seo" name="services">
+                                        <label class="form-check-label" for="seo">
+                                            Search Engine Optimization (SEO)
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Digital Marketing"
+                                            id="digital-marketing" name="services">
+                                        <label class="form-check-label" for="digital-marketing">
+                                            Digital Marketing
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Social Media Marketing"
+                                            id="social-media-marketing" name="services">
+                                        <label class="form-check-label" for="social-media-marketing">
+                                            Social Media Marketing
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Email Marketing"
+                                            id="email-marketing" name="services">
+                                        <label class="form-check-label" for="email-marketing">
+                                            Email Marketing
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Public Relations"
+                                            id="public-relations" name="services">
+                                        <label class="form-check-label" for="public-relations">
+                                            Public Relations
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Print Marketing"
+                                            id="print-marketing" name="services">
+                                        <label class="form-check-label" for="print-marketing">
+                                            Print Marketing
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Direct Mail Marketing"
+                                            id="direct-mail-marketing" name="services">
+                                        <label class="form-check-label" for="direct-mail-marketing">
+                                            Direct Mail Marketing
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Affliate Marketing"
+                                            id="direct-mail-marketing" name="services">
+                                        <label class="form-check-label" for="direct-mail-marketing">
+                                            Affliate Marketing
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Web Analytics"
+                                            id="direct-mail-marketing" name="services">
+                                        <label class="form-check-label" for="direct-mail-marketing">
+                                            Web Analytics
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Marketing Advice"
+                                            id="direct-mail-marketing" name="services">
+                                        <label class="form-check-label" for="direct-mail-marketing">
+                                            Marketing Advice
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="submit" value="Add Service">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<!-- 
+
+<div class="services">
+        <h1>Add New Service</h1>
+
+        <form method="POST" action="/add_services">
+            <div class="form-group">
+                <label>Service Name</label>
+                <select name="name" ></select>
+                <input type="text" class="form-control" name="name">
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" name="description" rows="5"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Cost Per Hour</label>
+                <input type="number" step="0.01" class="form-control" name="cost">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Service</button>
+        </form>
+    </div> -->

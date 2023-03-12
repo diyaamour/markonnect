@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_agency.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1><a class="title" href="/">Markonnect</a></h1>
+        <div class="auth-links">
+            <h5>Welcome, {{ agency.name }}</h5>
+            <a href="/agency/dashboard" class="logout-link">Back 🔙</a>
+            <a href="/logout" class="logout-link">Log Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Edit Your Agency ✏️</h2>
+        <form action="/update/agency" method="POST">
+            <p>Name:</p>
+            <input type="text" value="{{agency.name}}" name="name">
+            <p>Email:</p>
+            <input type="text" name="email" value="{{agency.email}}">
+            <p>Agency's Location:</p>
+            <input type="text" name="location" value="{{agency.location}}">
+            <br>
+            <p>Contact Info:</p>
+            <input type="text" name="contact" value="{{agency.contact}}">
+            
+            <input type="hidden" name="id" value="{{agency.id}}">
+            <button type="submit" id="edit-submit">Edit ✍🏼</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <p style="color: green;">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+    </div>
+</body>
+
+</html>

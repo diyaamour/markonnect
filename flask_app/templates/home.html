@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+    <title>Markonnect</title>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1><a class="title" href="/">Markonnect</a></h1>
+        <div class="auth-links">
+            <a href="/signin" class="login-link">Login</a>
+            <div class="dropdown">
+                <!-- <a href="#" class="signup-link">Sign Up</a> -->
+                <button class="signup-link">Sign Up</button>
+                <div class="dropdown-content">
+                    <a href="/company/signup">Sign up as a company/client</a>
+                    <a href="/agency/signup">Sign up as a marketing agency</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="hero-section">
+            <h2>Marketing for Your Company, Made Easy.</h2>
+            <div class="cta-buttons">
+                <a href="#">Hire an Agency</a>
+                <a href="#">Find Customers</a>
+            </div>
+            <form action="#" method="get">
+                <input type="text" name="search" placeholder="Search for services">
+                <button type="submit">Search</button>
+            </form>
+            <p class="subtitle">Try searching for different services, Digital marketing, SEO, content creation, etc.</p>
+            <div class="images">
+                <img src="image1.jpg" alt="Image 1">
+                <img src="image2.jpg" alt="Image 2">
+                <img src="image3.jpg" alt="Image 3">
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

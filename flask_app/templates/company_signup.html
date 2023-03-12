@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='company_signup.css') }}">
+    
+    <title>Markonnect</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1><a class="title" href="/">Markonnect</a></h1>
+        <div class="auth-links">
+            <a href="/signin" class="login-link">Login</a>
+            <div class="dropdown">
+                <!-- <a href="#" class="signup-link">Sign Up</a> -->
+                <button class="signup-link">Sign Up</button>
+                <div class="dropdown-content">
+                    <a href="/company/signup">Sign up as a company/client</a>
+                    <a href="/agency/signup">Sign up as a marketing agency</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+    {% if category =='logout' %}
+    <p style="color: black;">{{ message }}</p>
+    {% endif %}
+    {% endfor %}
+    {% endwith %}
+    <div class="container">
+        <h1>Register your company</h1>
+        <form action="/register/company" method="POST">
+            <input type="text" placeholder="Company/Business Name:" name="name">
+            <input type="text" placeholder="Email" name="email">
+            <input type="password" placeholder="Password" name="password">
+            <input type="password" placeholder="Confirm Password" name="confirm_password">
+            <input type="text" placeholder="Location" name="location">
+            <input type="text" placeholder="Contact Info" name="contact">
+            <input type="text" placeholder="Industry" name="industry">
+            <input type="submit" value="Register">
+        </form>
+        <p>Already have an account? <a href="/signin">Log in</a></p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+        {% if category =='error' %}
+        <p style="color: red;">{{ message }}</p>
+        {% endif %}
+        {% if category =='success' %}
+        <p style="color: green;">{{ message }}</p>
+        {% endif %}
+        {% endfor %}
+        {% endwith %}
+    </div>
+</body>
+
+</html>

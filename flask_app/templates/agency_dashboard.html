@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='agency_dashboard.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1><a class="title" href="/">Markonnect</a></h1>
+        <div class="auth-links">
+            <h5>Welcome, {{ agency.name }}</h5>
+            <a href="/logout" class="logout-link">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="text-center my-4">Agency's Dashboard</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Basic Information <a href="/edit_agency">(update ✍🏼)</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Name:</td>
+                            <td>{{agency.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Location:</td>
+                            <td>{{agency.location}}</td>
+                        </tr>
+                        <tr>
+                            <td>Contact:</td>
+                            <td>{{agency.contact}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Services Offered</th>
+                            <th><a href="/edit/services">Update ✍🏼</a></th>
+                        </tr>
+                        <tr>
+                            <th>Service</th>
+                            <th>Description</th>
+                            <th>Pricing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for service in services %}
+                        <tr>
+                            <td>{{ service.name }}</td>
+                            <td>{{ service.description }}</td>
+                            <td>${{ service.cost }}/hour</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
