@@ -26,23 +26,25 @@
             <div class="col-md-6">
                 <div class="list-group">
                     {% for agency in agencies %}
-                    <a href="#" class="list-group-item list-group-item-action d-flex w-100 justify-content-between">
-                        <div class="left-end">
-                            <h5 class="mb-1">{{agency.name}}</h5>
-                            <p class="mb-1">{{agency.location}}</p>
-                            <small class="text-muted">{{agency.contact}}</small>
+                    <div style="margin-top:30px;">
+                        <div class="list-group-item list-group-item-action d-flex w-100 justify-content-between">
+                            <div class="left-end">
+                                <h5 class="mb-1">{{agency.name}}</h5>
+                                <p class="mb-1">{{agency.location}}</p>
+                                <small class="text-muted">{{agency.contact}}</small>
+                            </div>
+                            <div class="right-end">
+                                <p><small class="text-muted">Reviews go here ⭐️⭐️⭐️⭐️</small></p>
+                                <a href="/hire/{{agency.id}}" class="btn btn-primary btn-sm mr-2">Hire me!</a>
+                                <a href="/view/agency/{{agency.id}}" class="btn btn-primary btn-sm">
+                                    <span class="d-flex align-items-center">
+                                        <span class="flex-grow-1">View Profile!</span>
+                                        <span><i class="fas fa-arrow-right"></i></span>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="right-end">
-                            <p><small class="text-muted">Reviews go here ⭐️⭐️⭐️⭐️</small></p>
-                            <a href="/hire/{{agency.id}}" class="btn btn-primary btn-sm mr-2">Hire me!</a>
-                            <a href="/view/agency/{{agency.id}}" class="btn btn-primary btn-sm">
-                                <span class="d-flex align-items-center">
-                                    <span class="flex-grow-1">View Profile!</span>
-                                    <span><i class="fas fa-arrow-right"></i></span>
-                                </span>
-                            </a>
-                        </div>
-                    </a>
+                    </div>
                     {% endfor %}
                 </div>
             </div>

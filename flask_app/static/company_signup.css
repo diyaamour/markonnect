@@ -115,9 +115,9 @@ nav a {
     display: block;
 } 
 .signup-link{
-    background-color: #32a2b8;
+    background-color: #009fd9;
     box-shadow: 2px 2px 0px black;
-    border-color: black;
+    border-color: #009fd9;
     height: 30px;
     width: 90px;
     color: white;
@@ -135,10 +135,7 @@ nav a {
 
 
 body {
-    font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
 }
 
 .container {
